@@ -190,33 +190,44 @@ export default class ActionButton extends Component {
     return (
       <View style={[
         parentStyle,
-        !this.props.hideShadow && shadowStyle,
-        !this.props.hideShadow && this.props.shadowStyle
+        (!isAndroid && !this.props.hideShadow) && shadowStyle,
+        !this.props.hideShadow && this.props.shadowStyle,
+        (isAndroid && !this.state.active) && { 
+          height: '100%', 
+          width: '100%', 
+          marginHorizontal: 0, 
+          justifyContent: 'flex-end', 
+          alignItems: 'flex-end', 
+          paddingHorizontal: this.props.offsetX,
+        }
       ]}
       >
-        <Touchable
-          testID={this.props.testID}
-          background={touchableBackground(
-            this.props.nativeFeedbackRippleColor,
-            this.props.fixNativeFeedbackRadius
-          )}
-          activeOpacity={this.props.activeOpacity}
-          onLongPress={this.props.onLongPress}
-          onPress={() => {
-            this.props.onPress();
-            if (this.props.children) this.animateButton();
-          }}
-          onPressIn={this.props.onPressIn}
-          onPressOut={this.props.onPressOut}
+        <Animated.View
+          {...this.props.panResponder}
+          style={[wrapperStyle, buttonStyle, animatedViewStyle, this.props.panResponderStyle]}
         >
-          <Animated.View
-            style={wrapperStyle}
-          >
-            <Animated.View style={[buttonStyle, animatedViewStyle]}>
-              {this._renderButtonIcon()}
-            </Animated.View>
-          </Animated.View>
-        </Touchable>
+          <Touchable
+            testID={this.props.testID}
+            background={touchableBackground(
+              this.props.nativeFeedbackRippleColor,
+              this.props.fixNativeFeedbackRadius
+            )}
+            activeOpacity={this.props.activeOpacity}
+            onLongPress={this.props.onLongPress}
+            onPress={() => {
+              this.props.onPress();
+              if (this.props.children) this.animateButton();
+            }}
+            onPressIn={this.props.onPressIn}
+            onPressOut={this.props.onPressOut}
+            style={{
+              height: '100%',
+              width: '100%',
+            }}
+          > 
+            {this._renderButtonIcon()}
+          </Touchable>
+        </Animated.View>
       </View>
     );
   }

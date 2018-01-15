@@ -7,36 +7,39 @@ import {
 
 
 export interface ActionButtonProperties extends ViewProperties {
-  resetToken?: any,
-  active?: boolean,
+  resetToken?: any;
+  active?: boolean;
 
-  position?: string,
-  elevation?: number,
-  zIndex?: number,
+  position?: string;
+  elevation?: number;
+  zIndex?: number;
 
-  hideShadow?: boolean,
-  shadowStyle?: {} | [any] | number,
-  bgColor?: string,
-  bgOpacity?: number,
-  buttonColor?: string,
-  buttonTextStyle?: TextStyle,
-  buttonText?: string,
+  hideShadow?: boolean;
+  shadowStyle?: {} | [any] | number;
+  bgColor?: string;
+  bgOpacity?: number;
+  buttonColor?: string;
+  buttonTextStyle?: TextStyle;
+  buttonText?: string;
 
-  offsetX?: number,
-  offsetY?: number,
-  spacing?: number,
-  size?: number,
-  autoInactive?: boolean,
-  onPress?: () => void,
-  backdrop?: boolean | object,
-  degrees?: number,
-  verticalOrientation?: 'up' | 'down',
-  backgroundTappable?: boolean,
-  activeOpacity?: number,
+  offsetX?: number;
+  offsetY?: number;
+  spacing?: number;
+  size?: number;
+  autoInactive?: boolean;
+  onPress?: () => void;
+  backdrop?: boolean | object;
+  degrees?: number;
+  verticalOrientation?: "up" | "down";
+  backgroundTappable?: boolean;
+  activeOpacity?: number;
 
-  useNativeFeedback?: boolean,
-  fixNativeFeedbackRadius?: boolean,
-  nativeFeedbackRippleColor?: string
+  useNativeFeedback?: boolean;
+  fixNativeFeedbackRadius?: boolean;
+  nativeFeedbackRippleColor?: string;
+
+  panResponder?: object;
+  panResponderStyle?: number;
 }
 
 export interface ActionButtonItemProperties extends ViewProperties {
