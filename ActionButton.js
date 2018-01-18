@@ -188,19 +188,21 @@ export default class ActionButton extends Component {
       : { marginHorizontal: this.props.offsetX, zIndex: this.props.zIndex };
 
     return (
-      <View style={[
-        parentStyle,
-        (!isAndroid && !this.props.hideShadow) && shadowStyle,
-        !this.props.hideShadow && this.props.shadowStyle,
-        (isAndroid && !this.state.active) && { 
-          height: '100%', 
-          width: '100%', 
-          marginHorizontal: 0, 
-          justifyContent: 'flex-end', 
-          alignItems: 'flex-end', 
-          paddingHorizontal: this.props.offsetX,
-        }
-      ]}
+      <View 
+        pointerEvents="box-none"
+        style={[
+          parentStyle,
+          (!isAndroid && !this.props.hideShadow) && shadowStyle,
+          !this.props.hideShadow && this.props.shadowStyle,
+          (isAndroid && !this.state.active) && { 
+            height: '100%', 
+            width: '100%', 
+            marginHorizontal: 0, 
+            justifyContent: 'flex-end', 
+            alignItems: 'flex-end', 
+            paddingHorizontal: this.props.offsetX,
+          }
+        ]}
       >
         <Animated.View
           {...this.props.panResponder}
